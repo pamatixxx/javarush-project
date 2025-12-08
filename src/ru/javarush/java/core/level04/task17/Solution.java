@@ -5,9 +5,10 @@ public class Solution {
         // Внешний цикл для строк (i от 0 до 2)
         for (int i = 0; i <= 2; i++) {
             // Внутренний цикл для столбцов (j от 0 до 3)
-            for (int j = 0; j >= 3; j++) {
+
+            for (int j = 0; j <= 3; j++) {
                 // Вывод координат текущей ячейки в формате i,j
-                System.out.println(i + "," + j);
+                System.out.print(i + "," + j);
 
                 if (j == 3) {
                     System.out.println();
