@@ -9,15 +9,17 @@ public class Solution {
         char revealedSymbol = (char) secretSpellCode;
 
         // Выводим символ, соответствующий коду 8364
-        System.out.println(revealedSymbol);
+        System.out.println("Символ с кодом 8364: " + revealedSymbol);
 
         // Объявляем переменную enigmaticLetter типа char и присваиваем ей символ 'Ж'
 
         char enigmaticLetter = 'Ж';
+
+
         // Явно приводим символ enigmaticLetter к типу int и сохраняем в numericEssenceOfLetter
-        int numericEssenceOfLetter = secretSpellCode;
+        int numericEssenceOfLetter = (int) enigmaticLetter;
 
         // Выводим числовой код символа 'Ж'
-        System.out.println(numericEssenceOfLetter);
+        System.out.println("Код символа 'Ж': " + numericEssenceOfLetter);
     }
 }

@@ -15,7 +15,7 @@ public class Solution {
         double absolute = actualFrequency - targetFrequency;
 
         // Сравниваем разницу с допуском и выводим соответствующее сообщение
-        System.out.println();
+        System.out.println(absolute);
 
     }
 }

@@ -8,6 +8,7 @@ public class Solution {
         Scanner scanner = new Scanner(System.in);
 
         // Просим пользователя ввести сумму платежа
+        System.out.println("Введите сумму платежа");
         double customerPayment = scanner.nextDouble();
 
         // Считываем введенное значение и сохраняем его в переменную типа double

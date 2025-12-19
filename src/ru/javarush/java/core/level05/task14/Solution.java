@@ -20,19 +20,37 @@ public class Solution {
         // Основной боевой цикл
         while (true) {
             // Ход рыцаря: промах, если превышает скрытый максимум
-
-
+            int userMax = console.nextInt();
+            while (userMax < 1 || userMax > 20) {
+                userMax = console.nextInt();
+            }
+            if (userMax > dragonMax) System.out.println("Промах");
+            else dragonHp -= userMax;
+            printLife(knightHp, dragonHp);
             // Проверяем смерть дракона
-
+            if (dragonHp<=0){
+                System.out.println("Рыцарь победил!");
+                break;
+            }
 
             // Ход дракона: первая голова атакует
 
-
+            int sumAttackDragon = 0;
+            sumAttackDragon+=rand.nextInt(10) + 1;
+            sumAttackDragon+=rand.nextInt(10) + 1;
+            knightHp-=sumAttackDragon;
             // Ход дракона: вторая голова атакует
-
-            
-            // Текущий статус и проверка смерти рыцаря
-
+            if (knightHp<= 0){
+                System.out.println("Дракон победил!");
+                break;
+            }
+            printLife(knightHp, dragonHp);
         }
+    }
+
+
+    public static void printLife(int knightHp, int dragonHp) {
+        System.out.println("Жизни рыцаря: " + knightHp);
+        System.out.println("Жизни дракона: " + dragonHp);
     }
 }

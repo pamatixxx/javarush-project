@@ -7,8 +7,9 @@ public class Solution {
         // Объявляем количество друзей-авантюристов
         int numberOfFriends = 2;
 
+        double applesPerFriend = (double) totalApples / numberOfFriends;
         // Приводим totalApples к типу double перед делением, чтобы сохранить дробную часть результата
         // Выводим точную долю яблок на одного друга (с дробной частью) на экран
-        System.out.println((double) totalApples / numberOfFriends);
+        System.out.println(applesPerFriend);
     }
 }
