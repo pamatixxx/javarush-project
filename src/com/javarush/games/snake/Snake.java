@@ -19,6 +19,14 @@ public class Snake {
     }
 
     public void setDirection(Direction direction) {
+
+        if ((this.direction == Direction.LEFT || this.direction == Direction.RIGHT) && snakeParts.get(0).x == snakeParts.get(1).x) {
+            return;
+        } else if ((this.direction == Direction.UP || this.direction == Direction.DOWN) && snakeParts.get(0).y == snakeParts.get(1).y) {
+            return;
+        }
+
+
         if (direction == Direction.RIGHT && this.direction == Direction.LEFT) return;
         else if (direction == Direction.LEFT && this.direction == Direction.RIGHT) return;
         else if (direction == Direction.UP && this.direction == Direction.DOWN) return;
@@ -27,14 +35,12 @@ public class Snake {
     }
 
     public void draw(Game game) {
-        if (isAlive == false) {
-            game.setCellValueEx(snakeParts.get(0).x, snakeParts.get(0).y, Color.NONE, HEAD_SIGN, Color.RED, 75);
-            game.setCellValueEx(snakeParts.get(1).x, snakeParts.get(1).y, Color.NONE, BODY_SIGN, Color.RED, 75);
-            game.setCellValueEx(snakeParts.get(2).x, snakeParts.get(2).y, Color.NONE, BODY_SIGN, Color.RED, 75);
-        } else {
-            game.setCellValueEx(snakeParts.get(0).x, snakeParts.get(0).y, Color.NONE, HEAD_SIGN, Color.BLACK, 75);
-            game.setCellValueEx(snakeParts.get(1).x, snakeParts.get(1).y, Color.NONE, BODY_SIGN, Color.BLACK, 75);
-            game.setCellValueEx(snakeParts.get(2).x, snakeParts.get(2).y, Color.NONE, BODY_SIGN, Color.BLACK, 75);
+        Color color = isAlive ? Color.BLACK : Color.RED;
+
+        for (int i = 0; i < snakeParts.size(); i++) {
+            GameObject part = snakeParts.get(i);
+            String sign = (i != 0) ? BODY_SIGN : HEAD_SIGN;
+            game.setCellValueEx(part.x, part.y, Color.NONE, sign, color, 75);
         }
     }
 
@@ -85,5 +91,9 @@ public class Snake {
             }
         }
         return false;
+    }
+
+    public int getLength() {
+        return snakeParts.size();
     }
 }

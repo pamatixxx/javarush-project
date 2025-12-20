@@ -11,6 +11,6 @@ public class Apple extends GameObject {
     }
 
     public void draw(Game game) {
-        game.setCellValueEx(x, y, Color.NONE, APPLE_SIGN, Color.ALICEBLUE, 75);
+        game.setCellValueEx(x, y, Color.NONE, APPLE_SIGN, Color.GREEN, 75);
     }
 }

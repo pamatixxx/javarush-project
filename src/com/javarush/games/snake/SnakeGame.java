@@ -9,7 +9,9 @@ public class SnakeGame extends Game {
     private Snake snake;
     private int turnDelay;
     private Apple apple;
-
+    private boolean isGameStopped;
+    private static final int GOAL = 28;
+    private int score;
 
     @Override
     public void initialize() {
@@ -19,12 +21,14 @@ public class SnakeGame extends Game {
     }
 
     private void createGame() {
-        this.snake = new Snake(WIDTH / 2, HEIGHT / 2);
+        turnDelay = 300;
+        setTurnTimer(turnDelay);
+        snake = new Snake(WIDTH / 2, HEIGHT / 2);
         createNewApple();
+        isGameStopped = false;
+        this.score = 0;
+        setScore(this.score);
         drawScene();
-        this.turnDelay = 300;
-        setTurnTimer(this.turnDelay);
-
     }
 
     private void drawScene() {
@@ -47,6 +51,8 @@ public class SnakeGame extends Game {
             snake.setDirection(Direction.UP);
         } else if (Key.DOWN == key) {
             snake.setDirection(Direction.DOWN);
+        } else if (Key.SPACE == key && isGameStopped) {
+            createGame();
         }
     }
 
@@ -55,12 +61,43 @@ public class SnakeGame extends Game {
         snake.move(apple);
         if (!apple.isAlive) {
             createNewApple();
+            this.score += 5;
+            setScore(this.score);
+            turnDelay -= 10;
+            setTurnTimer(turnDelay);
+        }
+        if (!snake.isAlive) {
+            gameOver();
+        }
+        if (snake.getLength() > GOAL) {
+            win();
         }
         drawScene();
     }
 
 
+
     private void createNewApple() {
-        apple = new Apple(getRandomNumber(WIDTH), getRandomNumber(HEIGHT));
+        Apple newApple;
+        do {
+            int x = getRandomNumber(WIDTH);
+            int y = getRandomNumber(HEIGHT);
+            newApple = new Apple(x, y);
+        } while (snake.checkCollision(newApple));
+        apple = newApple;
+    }
+
+
+    private void gameOver() {
+        isGameStopped = true;
+        stopTurnTimer();
+        showMessageDialog(Color.RED, "GAME OVER", Color.BLACK, 5);
+    }
+
+
+    private void win() {
+        stopTurnTimer();
+        isGameStopped = true;
+        showMessageDialog(Color.RED, "YOU WIN", Color.BLACK, 5);
     }
 }
