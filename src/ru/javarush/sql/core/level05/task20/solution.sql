@@ -1,0 +1,5 @@
+-- Запрос: возвращает все продукты с учетом сортировки по возрастанию цены,
+-- при этом продукты с NULL ценой выводятся первыми (NULLS FIRST).
+select *
+from products
+ORDER by price ASC NULLS FIRST
