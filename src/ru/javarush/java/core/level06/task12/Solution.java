@@ -12,10 +12,14 @@ public class Solution {
         double tolerance = 0.000001;
 
         // Вычисляем абсолютную разницу между actualFrequency и targetFrequency
-        double absolute = actualFrequency - targetFrequency;
+        double absolute = Math.abs(actualFrequency - targetFrequency);
 
         // Сравниваем разницу с допуском и выводим соответствующее сообщение
-        System.out.println(absolute);
 
+        if (absolute < tolerance) {
+            System.out.println("Лазер откалиброван с допустимой точностью");
+        } else {
+            System.out.println("Требуется дополнительная калибровка");
+        }
     }
 }
