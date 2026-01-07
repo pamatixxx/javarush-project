@@ -1,0 +1,30 @@
+# -------------------------------------------
+# IntelliJ IDEA
+# -------------------------------------------
+
+# Папка проекта IntelliJ
+.idea/
+
+# Файлы модулей
+*.iml
+*.ipr
+*.iws
+
+# Кэш и системные файлы IntelliJ
+workspace.xml
+tasks.xml
+usage.statistics.xml
+dictionaries
+shelf/
+
+# Build и кэш
+out/
+gen/
+
+# -------------------------------------------
+# ОС (на всякий случай)
+# -------------------------------------------
+.DS_Store
+Thumbs.db
+# Project exclude paths
+/target/

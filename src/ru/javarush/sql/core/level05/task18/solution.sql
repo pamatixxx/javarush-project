@@ -1,0 +1,4 @@
+-- Вычисление общей суммы продаж с учетом обработки NULL значений
+-- Если значение sale_amount равно NULL, оно заменяется на 10 с помощью функции COALESCE()
+select sum(COALESCE(sale_amount, 10)) as total_sales
+from sales

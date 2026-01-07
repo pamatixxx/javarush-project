@@ -1,0 +1,3 @@
+-- Выбор только столбцов name и course из таблицы students
+SELECT  name, course
+from students
